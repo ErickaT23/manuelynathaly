@@ -1,0 +1,1271 @@
+:root{
+    --bg: #f7f4ef;
+    --ink: #1d1d1d;
+  
+    /* OLIVO */
+    --olive: #556B2F;
+    --olive-dark: #3f5322;
+    --olive-soft: rgba(85,107,47,.12);
+  
+    --line: rgba(29,29,29,.18);
+    --card: rgba(255,255,255,.65);
+
+    --title: "Cinzel", serif;
+    --cursive: "Pinyon Script", cursive;
+    --text:"Playfair", serif;
+  }
+  
+  *{box-sizing:border-box}
+  body{
+    margin:0;
+    background:white;
+    color:var(--ink);
+  }
+  
+  .cover{
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:28px 18px 50px;
+    position:relative;
+    overflow:hidden;
+    background-color: var(--bg);
+  }
+  
+  .cover-inner{max-width:520px;width:100%}
+  
+  .mono{
+    letter-spacing:.35em;
+    font-weight:600;
+    color:var(--olive);
+    text-transform:uppercase;
+    font-size:14px;
+  }
+  
+  .couple{
+    margin:12px 0 6px;
+    font-size:38px;
+    font-weight:500;
+    font-family: var(--title);
+  }
+  
+  .amp{color:var(--olive)}
+  
+  .tag{
+    margin:0 0 18px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:15px;
+    color:rgba(29,29,29,.7);
+    font-family: var(--title);
+  }
+  
+  .envelope-wrap{display:flex;justify-content:center}
+  .envelope{
+    width:min(340px, 82vw);
+    height:auto;
+    filter: drop-shadow(0 18px 24px rgba(0,0,0,.12));
+    transform: translateY(0);
+    transition: transform .5s ease;
+  }
+  
+  .guest-card{
+    margin:18px auto 16px;
+    width:min(420px, 92vw);
+    border:1px solid var(--line);
+    background:var(--card);
+    padding:14px 14px;
+    backdrop-filter: blur(6px);
+  }
+  
+  .guest-line{
+    font-weight:600;
+    letter-spacing:.05em;
+    margin-bottom:6px;
+    font-family: var(--cursive);
+    font-size: 30px;
+  }
+  
+  .guest-sub{
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:.18em;
+    color:rgba(29,29,29,.7);
+    font-family: var(--title);
+    font-size: 15px;
+  }
+  
+  .guest-seats{
+    margin-top:6px;
+    font-size:14px;
+    color:var(--olive-dark);
+    font-family: var(--text);
+    font-size: 20px;
+    font-style: italic;
+  }
+  
+  .btn-primary{
+    border:none;
+    padding:12px 18px;
+    background:var(--olive);
+    color:white;
+    font-family:var(--title);
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-size:12px;
+    cursor:pointer;
+    transition:.25s ease;
+    box-shadow: #1d1d1d;
+  }
+a{
+    text-decoration:none;  
+  }
+  .btn-primary:hover{background:var(--olive-dark)}
+  .btn-primary:disabled{opacity:.6;cursor:not-allowed}
+  
+  .scroll-hint{
+    position:absolute;
+    bottom:14px;
+    width:100%;
+    font-size:11px;
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    color:rgba(29,29,29,.55);
+  }
+  
+  .invitation{display:none}
+  .invitation.is-open{display:block}
+  
+  .hero-photo{
+    height:100vh;
+    position:relative;
+    background:url("images/V1.jpg") center/cover no-repeat;
+  }
+  .hero-photo {
+    position: relative;
+    overflow: visible; /* IMPORTANTE */
+  }
+  .hero-overlay{
+    position:absolute; inset:0;
+    background:linear-gradient(to bottom, rgba(0,0,0,.35), rgba(0,0,0,.05));
+    display:flex;
+    align-items:flex-start;
+    justify-content:center;
+    padding-top:26px;
+  }
+  .hero-mono{color:white}
+  /* ================= TRUE LOVE DORADO ================= */
+
+.reveal-gold {
+    font-family: var(--script);
+    font-size: 50px;
+    margin: 6px 0;
+    /* Degradado dorado */
+    background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(4px);
+    transition: all 1.2s ease;
+  }
+  
+  /* Cuando aparece */
+  .reveal-gold.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+  .hero-quote{
+    position: absolute;
+    left: 33%;
+    transform: translateX(-50%);
+    bottom: -44px; /* controla cuánto invade la sección blanca */
+    z-index: 1;
+    text-align: center;
+  }
+  .quote-script{
+    font-family: var(--cursive);
+    font-size:50px;
+    margin:6px 0;
+  }
+  .quote-top,.quote-bottom{margin:0;font-size:14px;letter-spacing:.06em}
+  
+  .names-editorial{
+    padding:44px 18px;
+    text-align:center;
+    background-color: white;
+  }
+  
+  .names-grid{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:18px;
+    max-width:720px;
+    margin:0 auto;
+  }
+  
+  .name-lines{
+    font-size:30px;
+    letter-spacing:.18em;
+    line-height:1.6;
+    text-transform:uppercase;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    font-family: var(--title);
+  }
+
+  .and{
+    font-family: var(--text);
+    font-size: 40px;
+    font-style: italic;
+        /* Degradado dorado */
+        background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+  }
+  
+  .date-vertical{
+    border-left:1px solid var(--line);
+    padding-left:16px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+    letter-spacing:.12em;
+    color:var(--olive);
+    font-weight:600;
+    font-size: 50px;
+    font-family: var(--text);
+    font-style: italic;
+  }
+  
+  .names-text{
+    max-width:560px;
+    margin:18px auto 18px;
+    font-size:20px;
+    color:rgba(29,29,29,.82);
+    font-family: var(--text);
+  }
+  
+  .music-text{
+    margin:0;
+    font-size:25px;
+    color:rgba(29,29,29,.65);
+   font-family: var(--cursive);
+  }
+  
+  .music-btn{
+    margin-top:10px;
+    width:52px;height:52px;
+    border-radius:50%;
+    border:1px solid var(--line);
+    background:transparent;
+    cursor:pointer;
+    font-size:16px;
+    color:var(--olive);
+  }
+  
+#countdown{
+    padding:34px 18px 10px;
+    text-align:center;
+    background-color: #3f532233;
+    display: flex;
+    flex-direction: column;
+  }
+  .countdown h3{
+    margin:0 0 18px;
+    font-size:25px;
+    color:var(--olive-dark);
+    font-family: var(--cursive);
+  }
+  /* ====== CONTADOR HORIZONTAL ====== */
+.countdown{
+    background:#f2e6db;
+    text-align:center;
+    padding:40px 18px;
+  }
+  .count-title{
+    font-family: "Great Vibes", cursive;
+    font-size:28px;
+    margin-bottom:22px;
+    color:#3b2d2d;
+  }
+  .count-row{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:nowrap;        /* ✅ fuerza horizontal */
+  }
+  .count-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+  }
+  .label{
+    margin-top:8px;
+    font-size:10px;
+    letter-spacing:3px;
+    color:#555;
+    text-transform: uppercase;
+  }
+  /* ✅ si en pantallas muy pequeñas no caben, se ajusta */
+  @media (max-width: 360px){
+    .count-row{ gap:8px; }
+    .flip{ width:68px; }
+    .flip .digit{ font-size:26px; }
+  }
+  /* ====== FLIP DOWN REAL (PARTIDO) ====== */
+  .flip{
+    width:75px;
+    height:56px;
+    position:relative;
+    perspective: 900px;
+    border-radius:6px;
+    box-shadow:0 6px 12px rgba(0,0,0,0.15);
+    overflow:hidden;
+    background:#fff;
+  
+    --h: 56px;
+    --half: 28px;
+  }
+  
+  /* Mitades */
+  .flip .top,
+  .flip .bottom,
+  .flip .top-flip,
+  .flip .bottom-flip{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:50%;
+    overflow:hidden;
+    background:#fff;
+    backface-visibility:hidden;
+    transform-style:preserve-3d;
+  }
+  
+  .flip .top{ top:0; border-bottom:1px solid rgba(0,0,0,0.15); }
+  .flip .bottom{ bottom:0; }
+  
+  /* Número completo recortado */
+  .flip .digit{
+    position:absolute;
+    left:0;
+    width:100%;
+    height:var(--h);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  
+    font-family:"Cormorant Garamond", serif;
+    font-size:28px;
+    font-weight:600;
+    color:#111;
+    letter-spacing:2px;
+  }
+  
+  /* mitad superior visible */
+  .flip .top .digit,
+  .flip .top-flip .digit{ top:0; }
+  
+  /* mitad inferior visible */
+  .flip .bottom .digit,
+  .flip .bottom-flip .digit{ top:calc(-1 * var(--half)); }
+  
+  /* piezas animadas */
+  .flip .top-flip{
+    top:0;
+    border-bottom:1px solid rgba(0,0,0,0.15);
+    transform-origin: bottom;
+    opacity:0;
+  }
+  
+  .flip .bottom-flip{
+    bottom:0;
+    transform-origin: top;
+    transform: rotateX(90deg);
+    opacity:0;
+  }
+  
+  /* ✅ MÁS LENTO + “bajando” */
+  .flip.is-flipping .top-flip{
+    opacity:1;
+    animation: flipTopDown .65s ease-in forwards;
+  }
+  
+  .flip.is-flipping .bottom-flip{
+    opacity:1;
+    animation: flipBottomDown .65s ease-out forwards;
+    animation-delay: .65s;
+  }
+  
+  /* La tapa de arriba cae hacia abajo */
+  @keyframes flipTopDown{
+    0%   { transform: rotateX(0deg); }
+    100% { transform: rotateX(90deg); }  /* ✅ baja */
+  }
+  
+  /* La de abajo entra desde atrás */
+  @keyframes flipBottomDown{
+    0%   { transform: rotateX(-90deg); } /* ✅ viene desde arriba hacia ti */
+    100% { transform: rotateX(0deg); }
+  }
+/* FOTO que invade la siguiente sección */
+.half-photo{
+    position: relative;
+    z-index: 80;                 /* ✅ encima de itinerary */
+    transform: translateY(55px); /* ✅ cuánto invade (ajusta) */
+  }
+  
+  .half-photo img{
+    width:100%;
+    display:block;
+    box-shadow: 0 10px 26px rgba(0,0,0,.18);
+    z-index: 80;   
+  }
+  /* la sección siguiente baja para dejar espacio al overlay de la foto */  
+  .blessing{
+    padding:74px 18px 34px;
+    text-align:center;
+  }
+  .blessing h3{
+    font-size:20px;
+    text-transform:uppercase;
+    font-family: var(--title);
+    font-weight: 500;
+    /* Degradado dorado */
+    background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .parents{
+    display:flex;
+    gap:14px;
+    justify-content:center;
+    flex-wrap:wrap;
+  }
+  .parents p, .godparents p{
+    padding:14px;
+    margin:0;
+    font-family: var(--title);
+    font-size:28px;
+        /* Degradado dorado */
+        background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+  }
+  strong, .godparents h4{
+    /* Degradado dorado */
+    background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    font-family: var(--cursive);
+    font-size:30px;
+  }
+  .godparents h4{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+
+  #itinerary{
+    position: relative;
+  }
+  .itinerary, .rsvp{
+    padding:30px 18px 44px;
+    display:grid;
+    gap:18px;
+    max-width:700px;
+    margin:0 auto;
+   background-color: white;
+  }
+  #weddingItinerary{
+    text-align:center;
+  }
+  #weddingItinerary h3, #album h3{
+    margin:0;
+    color:var(--olive-dark);
+    font-family:var(--cursive);
+    font-size:40px;
+    font-weight:400;
+  }
+  .itinerary-list{
+    list-style:none;
+    margin:0;
+    padding:0;
+    display:grid;
+    gap:12px;
+    font-family:var(--text);
+    font-size:20px;
+  }
+  .itinerary-list li span{
+    color:var(--olive);
+    font-weight:600;
+    margin-right:8px;
+  }
+  .spotify-link{
+    color:var(--olive-dark);
+    font-family:var(--title);
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    font-size:12px;
+  }
+  .dress-links{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+  }
+  #album{
+    padding:40px 18px;
+    text-align:center;
+    display:grid;
+    gap:14px;
+    max-width:700px;
+    margin:0 auto;
+    background:white;
+  }
+  #album p{
+    margin:0;
+    font-family:var(--text);
+    font-size:20px;
+    color:var(--olive-dark);
+  }
+  .album-qr{
+    display:flex;
+    justify-content:center;
+    padding:10px;
+  }
+  .album-qr img{
+    border:10px solid white;
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+  }
+  .event-card{
+    padding:16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .event-icon{
+    width:100px;
+    height:100px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .event-icon img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+  }
+  .event-top, .gifts, .rsvp{
+    display:flex; 
+    gap:12px; 
+    align-items:flex-start;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    display:flex;
+    flex-direction:column; /* si quieres todo centrado */
+    align-items:center;
+    text-align:center;
+  }
+  /* ================= IMAGEN DEL LUGAR ================= */
+.event-photo {
+  margin-top: 18px;
+  border-radius: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.event-photo img {
+  width: 100%;
+  height: 200px;                 /* puedes ajustar */
+  object-fit: cover;
+  display: block;
+  transition: transform 1s ease;
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+.event-card{
+  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
+  transition: transform .3s ease, box-shadow .3s ease;
+  background-color: white;
+  border-radius: 20px;
+}
+/* Zoom suave al hacer hover */
+.event-card:hover .event-photo img {
+  transform: scale(1.05);
+}
+/* Sombra elegante */
+.event-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom,rgba(0,0,0,0) 60%,rgba(0,0,0,0.15) 100%);
+  pointer-events: none;
+}
+  .event-title, .dress h3, .gifts h3, .rsvp h3{
+    font-size:40px;
+    font-family: var(--cursive);
+           /* Degradado dorado */
+           background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
+           -webkit-background-clip: text;
+           -webkit-text-fill-color: transparent;
+           background-clip: text;
+    display: flex;
+    justify-content: center;
+  }
+  .dress h3, .dress-strong, .dress-note, .gifts h3, .gifts-strong, .rsvp h3, .rsvp-strong{
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  .event-place, .dress-strong{
+    font-size:22px;
+    margin-top:4px;
+    font-family: var(--title);
+    display: flex;
+    justify-content: center;
+    color:var(--olive-dark);
+}
+  .event-time{
+    color:var(--olive-dark);
+    margin-top:2px;
+    font-weight:600;
+    font-family: var(--text);
+    display: flex;
+    justify-content: center;
+    font-size: 20px;
+}
+  .event-address, .dress-note, .gifts-strong, .rsvp-strong, .no-kids p{
+    margin-top: 10px;
+    font-family: var(--text);
+    font-size: 20px;
+    color: var(--olive-dark);
+    text-align: center;   /* ✅ esto es lo que centra texto */
+  }
+  .btn-outline{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 14px;
+    border:1px solid var(--ink);
+    text-decoration:none;
+    color:var(--ink);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:11px;
+    font-family: var(--title);
+  }
+  /* Botón principal */
+#btnConfirmarRsvp{
+    display:inline-block;
+    margin-top:12px;
+    padding:10px 14px;
+    border:1px solid var(--ink);
+    text-decoration:none;
+    color:var(--ink);
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-size:11px;
+    font-family: var(--title);
+    cursor: pointer;
+    transition: .25s ease;
+    background-color: transparent;
+  }
+  #btnConfirmarRsvp:hover{
+    background: transparent;
+    color: var(--olive);
+  }
+  
+  #btnConfirmarRsvp:disabled{
+    opacity: .6;
+    cursor: not-allowed;
+  }
+
+  /* Mensajes */
+.rsvp-msg{
+    margin: 14px auto 0;
+    max-width: 560px;
+    padding: 10px 12px;
+    border-radius: 10px;
+    font-family: var(--text);
+    font-size: 14px;
+    line-height: 1.35;
+  }
+  
+  .rsvp-msg.ok{
+    color: var(--olive-dark);
+  }
+  
+  .rsvp-msg.error{
+    background: rgba(200, 0, 0, .08);
+    border: 1px solid rgba(200, 0, 0, .18);
+    color: rgba(130, 0, 0, .95);
+  }
+  /* Confirmado UI */
+.rsvp-confirmed{
+    background: rgba(85,107,47,.12) !important;
+    color: var(--olive-dark) !important;
+    border-color: rgba(85,107,47,.35) !important;
+  }
+  /* ================= MODAL ================= */
+.rsvp-backdrop{
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,.55);
+    backdrop-filter: blur(2px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    opacity: 0;
+    transition: opacity .25s ease;
+    padding: 18px;
+  }
+  
+  .rsvp-backdrop.show{
+    opacity: 1;
+  }
+  .rsvp-modal{
+    width: min(520px, 96vw);
+    background: #fff;
+    border-radius: 18px;
+    padding: 18px 18px 16px;
+    box-shadow: 0 18px 40px rgba(0,0,0,.22);
+    text-align: left;
+    position: relative;
+    transform: translateY(8px);
+    transition: transform .25s ease;
+  }
+  .rsvp-backdrop.show .rsvp-modal{
+    transform: translateY(0);
+  }
+  
+  .rsvp-close{
+    position: absolute;
+    top: 1px;
+    right: 3px;
+    width: 30px;
+    height: 30px;
+    border-radius: 999px;
+    border: none;
+    background: #fff;
+    font-size: 22px;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .rsvp-modal h3{
+    margin: 10px 0 4px;
+    font-family: var(--title);
+    color: var(--olive-dark);
+    font-size: 20px;
+  }
+  
+  .rsvp-sub{
+    margin: 0 0 14px;
+    font-family: var(--text);
+    color: rgba(29,29,29,.65);
+    font-size: 16px;
+  }
+  .rsvp-modal label{
+    display: block;
+    margin: 10px 0 6px;
+    font-family: var(--title);
+    font-size: 16px;
+    color: rgba(29,29,29,.55);
+  }
+.rsvp-modal input{
+    width: 100%;
+    padding: 12px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,.12);
+    background: rgba(0,0,0,.02);
+    font-family: var(--text);
+    font-size: 18px;
+    outline: none;
+  }
+  .rsvp-actions{
+    display: flex;
+    gap: 10px;
+    margin-top: 14px;
+  }
+  .rsvp-btn{
+    flex: 1;
+    padding: 12px 12px;
+    border-radius: 12px;
+    border: 1px solid rgba(0,0,0,.12);
+    font-family: var(--text);
+    font-size: 14px;
+    cursor: pointer;
+    transition: all .2s ease;
+  }
+  
+  .rsvp-yes{
+    background: var(--olive);
+    color: #fff;
+    border-color: var(--olive);
+  }
+  .rsvp-yes:hover{
+    background: transparent;
+    color: var(--olive);
+  }
+  
+  .rsvp-no{
+    background: #fff;
+    color: rgba(29,29,29,.85);
+  }
+  .rsvp-no:hover{
+    border-color: rgba(29,29,29,.35);
+  }
+  
+  /* Responsive */
+  @media (max-width: 420px){
+    .rsvp-actions{
+      flex-direction: column;
+    }
+  }      
+/* Separadores normales (una sola foto) */
+/* Separador con background-image */
+.full-sep[style*="background-image"]{
+    height: 65vh;                 /* ajusta: 55vh / 70vh */
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+/* SOLO el separador rotativo */
+.full-sep-rotating{
+    position: relative;
+    width: 100%;
+    height: 65vh;
+    overflow: hidden;
+    background:#000;
+  }
+  
+  .full-sep-rotating > img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;          /* ✅ full-bleed para slideshow */
+    object-position: center;
+    transition: opacity .6s ease;
+  }
+  .dress{
+    background-color: #3f532233;
+    padding:16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .no-kids{
+    background-color: #3f53224d;
+    padding:16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .love-quote{
+    background-color: #3f53226d;
+  }
+  .love-quote p {
+    color: var(--olive-dark);
+    font-family: var(--cursive);
+    font-size: 28px;
+  }
+  .dress, .gifts, .love-quote, .closing{
+    padding:44px 18px;
+    text-align:center;
+  }
+  /* ================= CLOSING ================= */
+
+.closing{
+    padding: 10px 10px 10px;
+    text-align: center;
+    background-color: white; /* tono claro elegante */
+    position: relative;
+  }
+  .closing .mono{
+    margin-bottom: 24px;
+  }
+  .closing .mono-img{
+    width: 110px;
+    max-width: 40%;
+    opacity: 0.95;
+  }
+  /* Nombre pareja */
+  .closing h3{
+    margin: 0 0 12px;
+    font-family: var(--title); /* tu tipografía elegante */
+    font-size: 34px;
+    letter-spacing: 0.05em;
+    font-weight: 500;
+    background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  /* Fecha */
+  .closing p{
+    margin: 0;
+    font-family: var(--text);
+    font-size: 15px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: rgba(0,0,0,0.55);
+  }
+  /* Línea decorativa sutil */
+  .closing::after{
+    content:"";
+    display:block;
+    width: 60px;
+    height: 1px;
+    background: var(--olive);
+    margin: 28px auto 0;
+    opacity: 0.5;
+  }
+  #footer{
+    padding:20px 18px 34px;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    background-color:#3f53223e;
+    flex-direction: column;
+  }
+  .footer-brand{
+    letter-spacing:.18em;
+    text-transform:uppercase;
+    font-size:12px
+}
+  #social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+  #social-icons a {
+    color: white;
+    font-size: 2.5rem;
+    transition: color 0.3s;
+}
+
+#social-icons a {
+    color: white;
+    margin: 0 10px;
+    font-size: 1.5rem;
+}
+  .footer-logo img {
+    width: 90px;
+    height: auto;
+}
+  /* Fade In */
+  .fade-in-element{
+    opacity:0;
+    transform: translateY(14px);
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  .fade-in-element.is-visible{
+    opacity:1;
+    transform: translateY(0);
+  }
+
+  /* ================= TRANSICIÓN PORTADA ================= */
+
+.cover {
+    transition: opacity .6s ease, transform .6s ease;
+  }
+  
+  .cover.is-hidden {
+    opacity: 0;
+    transform: scale(1.02);
+    pointer-events: none;
+  }
+  
+  .invitation {
+    display: none;
+    opacity: 0;
+    transition: opacity .6s ease;
+  }
+  
+  .invitation.is-open {
+    display: block;
+    opacity: 1;
+  }
+  .mono {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .mono-img {
+    width: 120px; /* ajusta tamaño aquí */
+    max-width: 40vw;
+    height: auto;
+    object-fit: contain;
+  }
+  .hero-mono-img {
+    width: 90px;
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,.4));
+  }
+  .calendar-btn{
+    margin: 18px auto 0;
+    display: inline-block;
+    border-color: var(--olive);
+    color: var(--olive);
+  }
+  .calendar-btn:hover{
+    background: var(--olive);
+    color: #fff;
+    border-color: var(--olive);
+  }
+
+/*ANIMACIONES*/
+/* BOTONES: se nota en desktop (hover) y en celular (tap) */
+button, .btn-outline, a.btn-outline {
+    transition: transform .18s ease, box-shadow .18s ease, opacity .18s ease;
+    will-change: transform;
+  }
+  
+  button:hover, .btn-outline:hover, a.btn-outline:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0,0,0,.14);
+  }
+  
+  button:active, .btn-outline:active, a.btn-outline:active {
+    transform: scale(.98);
+    box-shadow: 0 6px 14px rgba(0,0,0,.12);
+  }
+
+  /* ================= ANIMACIONES NOTORIAS (AUTO) ================= */
+
+/* Estado inicial */
+section h3,
+section p,
+section .event-icon {
+  opacity: 0;
+  transform: translateY(28px) scale(.98);
+  filter: blur(3px);
+  transition: opacity .9s cubic-bezier(.2,.8,.2,1),
+              transform .9s cubic-bezier(.2,.8,.2,1),
+              filter .9s cubic-bezier(.2,.8,.2,1);
+  will-change: opacity, transform, filter;
+}
+
+/* Activación por sección */
+section.is-visible h3,
+section.is-visible p,
+section.is-visible .event-icon {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  filter: blur(0);
+}
+
+/* Stagger dentro de la sección */
+section.is-visible .event-icon { transition-delay: .05s; }
+section.is-visible h3          { transition-delay: .15s; }
+section.is-visible p           { transition-delay: .28s; }
+
+/* Botones: más “wow” */
+button, .btn-outline, a.btn-outline {
+  transition: transform .18s ease, box-shadow .18s ease, filter .18s ease;
+}
+
+button:hover, .btn-outline:hover, a.btn-outline:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 14px 28px rgba(0,0,0,.18);
+  filter: brightness(1.03);
+}
+
+button:active, .btn-outline:active, a.btn-outline:active {
+  transform: scale(.97);
+  box-shadow: 0 10px 22px rgba(0,0,0,.15);
+}
+
+/* Iconos: bounce suave al entrar */
+section.is-visible .event-icon {
+  animation: iconPop .55s cubic-bezier(.2,.9,.3,1) both;
+}
+
+@keyframes iconPop {
+  0%   { transform: translateY(18px) scale(.85); opacity: 0; }
+  70%  { transform: translateY(-6px) scale(1.08); opacity: 1; }
+  100% { transform: translateY(0) scale(1); }
+}
+
+/* Accesibilidad: reduce motion */
+@media (prefers-reduced-motion: reduce){
+  section h3, section p, section .event-icon,
+  button, .btn-outline, a.btn-outline{
+    transition: none !important;
+    animation: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    filter: none !important;
+  }
+}
+
+/* ================= BOTONES SLIDE IN ================= */
+
+/* Estado inicial */
+section button,
+section .btn-outline,
+section a.btn-outline {
+
+  opacity: 0;
+  transform: translateX(-120px);
+  transition: 
+    transform 1s cubic-bezier(.22,1,.36,1),
+    opacity .9s ease;
+  will-change: transform, opacity;
+}
+
+/* Cuando la sección es visible */
+section.is-visible button,
+section.is-visible .btn-outline,
+section.is-visible a.btn-outline {
+
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* Stagger bonito si hay varios botones */
+section.is-visible button:nth-of-type(1),
+section.is-visible .btn-outline:nth-of-type(1) {
+  transition-delay: .25s;
+}
+
+section.is-visible button:nth-of-type(2),
+section.is-visible .btn-outline:nth-of-type(2) {
+  transition-delay: .5s;
+}
+/* ================= MODAL TRANSFERENCIA ================= */
+
+.transfer-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  z-index: 999;
+  backdrop-filter: blur(4px);
+}
+
+.transfer-modal {
+  background: white;
+  padding: 40px 28px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 400px;
+  text-align: center;
+  position: relative;
+
+  /* POP mejorado */
+  animation: modalPop .38s cubic-bezier(.2,.9,.3,1) both;
+  box-shadow: 0 20px 55px rgba(0,0,0,.22);
+}
+@keyframes modalPop{
+  0%   { transform: translateY(10px) scale(.86); opacity: 0; }
+  70%  { transform: translateY(-4px) scale(1.03); opacity: 1; }
+  100% { transform: translateY(0) scale(1); opacity: 1; }
+}
+.transfer-modal h3{
+  font-size:20px;
+  font-family: var(--title);
+         /* Degradado dorado */
+         background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
+         -webkit-background-clip: text;
+         -webkit-text-fill-color: transparent;
+         background-clip: text;
+  display: flex;
+  justify-content: center;
+}
+
+.transfer-close {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  background: none;
+  border: none;
+  font-size: 26px;
+  cursor: pointer;
+}
+
+.transfer-names {
+  font-family: var(--title);
+  font-size: 30px;
+  margin-bottom: 20px;
+  color: var(--olive-dark);
+}
+
+.transfer-info p {
+  margin: 6px 0;
+  font-size: 20px;
+  color: #444;
+  font-family: var(--text);
+}
+.transfer-info strong {
+  margin: 6px 0;
+  font-size: 20px;
+  font-family: var(--text);
+}
+/* ================= GIFTS ================= */
+
+/* ================= BOTÓN BRILLO (SHIMMER) ================= */
+.btn-shimmer{
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-shimmer::after{
+  content:"";
+  position:absolute;
+  top:-40%;
+  left:-60%;
+  width: 40%;
+  height: 180%;
+  background: linear-gradient(
+    90deg,
+    rgba(255,255,255,0) 0%,
+    rgba(255,255,255,.55) 50%,
+    rgba(255,255,255,0) 100%
+  );
+  transform: rotate(18deg);
+  animation: shimmer 3.8s ease-in-out infinite;
+  pointer-events:none;
+}
+
+@keyframes shimmer{
+  0%   { left: -60%; opacity: 0; }
+  15%  { opacity: 1; }
+  45%  { left: 120%; opacity: 1; }
+  60%  { opacity: 0; }
+  100% { left: 120%; opacity: 0; }
+}
+.copy-btn{
+  width: 100%;
+}
+
+/* Toast copiado */
+.copy-toast{
+  margin-top: 10px;
+  font-family: var(--text);
+  font-size: 14px;
+  color: var(--olive-dark);
+  background: rgba(85,107,47,.12);
+  border: 1px solid rgba(85,107,47,.22);
+  padding: 10px 12px;
+  border-radius: 12px;
+}
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce){
+  .btn-shimmer::after{ animation: none !important; }
+  .transfer-modal{ animation: none !important; }
+}
