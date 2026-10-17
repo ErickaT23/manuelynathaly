@@ -15,7 +15,26 @@ function getQueryParam(key) {
 }
 
 document.addEventListener("DOMContentLoaded", () => {
+  if (window.RSVPDatabase) {
+    window.RSVPDatabase.getInvitados().then(async (remoteGuests) => {
+      if (remoteGuests.length > 0) return;
+      await Promise.all(guests.map((guest) => window.RSVPDatabase.saveInvitado({
+        id: guest.id,
+        nombre: guest.name,
+        pases: guest.passes,
+        activo: true
+      })));
+    }).catch((error) => console.warn("No se pudieron inicializar los invitados en Firebase", error));
+  }
   const guestId = getQueryParam("id");
+  if (guestId && window.RSVPDatabase) {
+    window.RSVPDatabase.getInvitadoById(guestId).then((guest) => {
+      if (guest && guest.activo !== false) {
+        window.currentGuest = { ...guest, name: guest.nombre, passes: guest.pases };
+        window.dispatchEvent(new CustomEvent("guest:updated"));
+      }
+    }).catch((error) => console.warn("No se pudo cargar el invitado desde Firebase", error));
+  }
 
   // Si no hay id, no marcamos error: solo no hay invitado
   if (!guestId) {

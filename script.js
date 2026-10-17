@@ -51,6 +51,17 @@ function initWishes() {
   const form = document.getElementById("wish-form");
   const list = document.getElementById("wishes");
   const status = document.getElementById("wish-status");
+  window.RSVPDatabase?.subscribeToWishes((records) => {
+    if (!records.length) return;
+    list.replaceChildren(...records.map((record) => {
+      const card = document.createElement("article");
+      card.className = "wish-card";
+      card.innerHTML = "<strong></strong><p></p>";
+      card.querySelector("strong").textContent = record.nombre || "Invitado";
+      card.querySelector("p").textContent = record.mensaje || "";
+      return card;
+    }));
+  });
   document.getElementById("btnToggleWishForm")?.addEventListener("click", () => { formPanel.hidden = !formPanel.hidden; });
   document.getElementById("btnToggleWishes")?.addEventListener("click", () => { wishesPanel.hidden = !wishesPanel.hidden; });
   form?.addEventListener("submit", (event) => {
@@ -64,6 +75,11 @@ function initWishes() {
     card.querySelector("strong").textContent = name;
     card.querySelector("p").textContent = message;
     list.prepend(card);
+    if (window.RSVPDatabase) {
+      window.RSVPDatabase.saveWish({ nombre: name, mensaje: message }).catch((error) => {
+        console.warn("No se pudo guardar el deseo en Firebase", error);
+      });
+    }
     form.reset();
     status.textContent = "Tu mensaje fue agregado. Gracias.";
   });

@@ -81,6 +81,10 @@ function closeRsvpModal() {
 
 /**************** API ****************/
 async function apiCheck(id) {
+  if (window.RSVPDatabase) {
+    const record = await window.RSVPDatabase.getConfirmationByGuestId(id);
+    return Boolean(record && record.confirmado);
+  }
   const url = `${RSVP_ENDPOINT}?guestId=${encodeURIComponent(id)}&t=${Date.now()}`;
   const r = await fetch(url, { cache: "no-store" });
   const text = await r.text();
@@ -97,6 +101,15 @@ async function apiCheck(id) {
 }
 
 async function apiSend(data) {
+  if (window.RSVPDatabase) {
+    return window.RSVPDatabase.saveConfirmation({
+      id: data.guestId,
+      nombre: data.nombre,
+      pasesAsignados: Number(data.pases || 0),
+      respuesta: data.respuesta === "SI" ? "si" : "no",
+      cantidadConfirmada: data.respuesta === "SI" ? Number(data.pases || 0) : 0
+    }).then(() => ({ ok: true }));
+  }
   const body = new URLSearchParams(data).toString();
 
   const r = await fetch(RSVP_ENDPOINT, {
@@ -304,4 +317,3 @@ document.addEventListener("DOMContentLoaded", () => {
   btnSi.addEventListener("click", () => confirmar("SI"));
   btnNo.addEventListener("click", () => confirmar("NO"));
 });
-
