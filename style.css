@@ -645,12 +645,21 @@ a{
     font-size:18px;
   }
   .collapsible-panel[hidden]{display:none}
-  .wish-form{display:grid;gap:10px;margin-top:18px}
-  .wish-form input, .wish-form textarea{padding:12px;border:1px solid var(--line);font-family:var(--text)}
-  .wishes-list{display:grid;gap:12px;margin-top:18px}
+  .wish-form{width:50%;max-width:none;display:grid;gap:10px;margin:18px auto 0}
+  .wish-form input, .wish-form textarea{width:100%;max-width:100%;padding:12px;border:1px solid var(--line);font-family:var(--text);font-size:16px;line-height:1.35;resize:vertical}
+  .wish-form input{min-height:92px;font-size:20px}
+  .wish-form textarea{min-height:240px;font-size:20px}
+  .wish-form .btn-outline{justify-self:center}
+  .wishes-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px;width:100%;max-width:760px}
   .wish-card{padding:14px;border:1px solid var(--line);text-align:left}
+  .wish-card:last-child{grid-column:1 / -1;width:100%;max-width:none}
   .wish-card strong{font-size:22px}
   .wish-card p{margin:8px 0 0}
+  @media (max-width:560px){
+    .wishes-list{grid-template-columns:1fr}
+    .wish-card:last-child{grid-column:auto}
+    .wish-form{width:100%}
+  }
   .event-card{
     padding:16px;
     display: flex;
@@ -949,7 +958,7 @@ a{
     width: 100%;
     height: 65vh;
     overflow: hidden;
-    background:#000;
+    background:#f7f4ef;
   }
   
   .full-sep-rotating > img{
@@ -957,8 +966,12 @@ a{
     height: 100%;
     object-fit: cover;          /* ✅ full-bleed para slideshow */
     object-position: center;
-    transition: opacity .6s ease;
+     position:absolute;
+     inset:0;
+     opacity:0;
+     transition: opacity 1.2s ease;
   }
+  .full-sep-rotating > img.is-active{opacity:1}
   .dress{
     background-color: #3f532233;
     padding:16px;

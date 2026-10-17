@@ -1,8 +1,20 @@
 /**************** RSVP CONFIG ****************/
-const RSVP_ENDPOINT =
-  "https://script.google.com/macros/s/AKfycbwF49QYSMh9fCLeTUF9M-C5WL3qV7vc83DT4BYzBH91n1JdiN15HMkS95lX5GnuzLkn/exec";
-
 const $ = (s) => document.querySelector(s);
+
+function waitForFirebaseDatabase(timeout = 8000) {
+  return new Promise((resolve, reject) => {
+    const started = Date.now();
+    const timer = setInterval(() => {
+      if (window.RSVPDatabase) {
+        clearInterval(timer);
+        resolve(window.RSVPDatabase);
+      } else if (Date.now() - started > timeout) {
+        clearInterval(timer);
+        reject(new Error("Firebase no está disponible."));
+      }
+    }, 50);
+  });
+}
 
 /**************** HELPERS ****************/
 function showMsg(el, text, type = "ok") {
@@ -81,50 +93,21 @@ function closeRsvpModal() {
 
 /**************** API ****************/
 async function apiCheck(id) {
-  if (window.RSVPDatabase) {
-    const record = await window.RSVPDatabase.getConfirmationByGuestId(id);
-    return Boolean(record && record.confirmado);
-  }
-  const url = `${RSVP_ENDPOINT}?guestId=${encodeURIComponent(id)}&t=${Date.now()}`;
-  const r = await fetch(url, { cache: "no-store" });
-  const text = await r.text();
-
-  let j;
-  try {
-    j = JSON.parse(text);
-  } catch {
-    console.warn("apiCheck no devolvió JSON. Respuesta:", text.slice(0, 200));
-    return false;
-  }
-
-  return j.alreadyConfirmed === true || j.alreadyConfirmed === "true" || j.alreadyConfirmed === 1;
+  const database = await waitForFirebaseDatabase();
+  const record = await database.getConfirmationByGuestId(id);
+  return Boolean(record && record.confirmado);
 }
 
 async function apiSend(data) {
-  if (window.RSVPDatabase) {
-    return window.RSVPDatabase.saveConfirmation({
-      id: data.guestId,
-      nombre: data.nombre,
-      pasesAsignados: Number(data.pases || 0),
-      respuesta: data.respuesta === "SI" ? "si" : "no",
-      cantidadConfirmada: data.respuesta === "SI" ? Number(data.pases || 0) : 0
-    }).then(() => ({ ok: true }));
-  }
-  const body = new URLSearchParams(data).toString();
-
-  const r = await fetch(RSVP_ENDPOINT, {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8" },
-    body,
+  const database = await waitForFirebaseDatabase();
+  await database.saveConfirmation({
+    id: data.guestId,
+    nombre: data.nombre,
+    pasesAsignados: Number(data.pases || 0),
+    respuesta: data.respuesta === "SI" ? "si" : "no",
+    cantidadConfirmada: data.respuesta === "SI" ? Number(data.pases || 0) : 0
   });
-
-  const text = await r.text();
-  try {
-    return JSON.parse(text);
-  } catch {
-    console.warn("apiSend no devolvió JSON. Respuesta:", text.slice(0, 200));
-    return { ok: false, raw: text };
-  }
+  return { ok: true };
 }
 
 /**************** LOCAL CONFIRM ****************/

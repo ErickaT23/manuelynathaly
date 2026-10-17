@@ -270,22 +270,21 @@ function initRotatingSep(images){
   if(!imgEl || !images || images.length === 0) return;
 
   let currentIndex = 0;
+  let activeImg = imgEl;
+  let nextImg = document.createElement("img");
+  nextImg.alt = imgEl.alt;
+  nextImg.className = imgEl.className;
+  nextImg.setAttribute("aria-hidden", "true");
+  imgEl.parentElement.appendChild(nextImg);
 
   function changeImage(){
-
-    imgEl.style.opacity = 0;
-
-    setTimeout(() => {
-
-      currentIndex = (currentIndex + 1) % images.length;
-
-      imgEl.src = images[currentIndex];
-
-      imgEl.onload = () => {
-        imgEl.style.opacity = 1;
-      };
-
-    }, 400);
+    currentIndex = (currentIndex + 1) % images.length;
+    nextImg.src = images[currentIndex];
+    nextImg.onload = () => {
+      nextImg.classList.add("is-active");
+      activeImg.classList.remove("is-active");
+      [activeImg, nextImg] = [nextImg, activeImg];
+    };
 
   }
 
