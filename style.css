@@ -436,7 +436,7 @@ a{
     text-align:center;
   }
   .blessing h3{
-    font-size:20px;
+    font-size:16px;
     text-transform:uppercase;
     font-family: var(--title);
     font-weight: 500;
@@ -456,7 +456,7 @@ a{
     padding:14px;
     margin:0;
     font-family: var(--title);
-    font-size:28px;
+     font-size:20px;
         /* Degradado dorado */
         background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
         -webkit-background-clip: text;
@@ -495,7 +495,7 @@ a{
     margin:0;
     color:var(--olive-dark);
     font-family:var(--cursive);
-    font-size:40px;
+    font-size:35px;
     font-weight:400;
   }
   .itinerary-list{
@@ -503,14 +503,43 @@ a{
     margin:0;
     padding:0;
     display:grid;
-    gap:12px;
+    gap:0;
     font-family:var(--text);
     font-size:20px;
   }
+  .itinerary-list li{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+    padding:18px 0;
+    position:relative;
+  }
+  .itinerary-list li:not(:last-child)::after{
+    content:"";
+    width:1px;
+    height:24px;
+    background:var(--olive);
+    position:absolute;
+    bottom:-12px;
+  }
+  .itinerary-list img{
+    width:48px;
+    height:48px;
+    object-fit:contain;
+  }
   .itinerary-list li span{
-    color:var(--olive);
-    font-weight:600;
-    margin-right:8px;
+    display:flex;
+    flex-direction:column;
+    gap:3px;
+  }
+  .itinerary-list strong{
+    font-family:var(--text);
+    font-size:20px;
+  }
+  .itinerary-list b{
+    color:var(--olive-dark);
+    font-weight:400;
   }
   .spotify-link{
     color:var(--olive-dark);
@@ -614,8 +643,8 @@ a{
   background: linear-gradient(to bottom,rgba(0,0,0,0) 60%,rgba(0,0,0,0.15) 100%);
   pointer-events: none;
 }
-  .event-title, .dress h3, .gifts h3, .rsvp h3{
-    font-size:40px;
+  .event-title, .dress h3, .gifts h3, .rsvp h3, #album h3{
+     font-size:35px;
     font-family: var(--cursive);
            /* Degradado dorado */
            background:linear-gradient(120deg,#3f5322 0%,#556B2F 25%,#8aa05a 50%,#556B2F 75%, #3f5322 100%);
@@ -623,14 +652,14 @@ a{
            -webkit-text-fill-color: transparent;
            background-clip: text;
     display: flex;
-    justify-content: center;
-  }
+     justify-content: center;
+   }
   .dress h3, .dress-strong, .dress-note, .gifts h3, .gifts-strong, .rsvp h3, .rsvp-strong{
     margin-top: 0;
     margin-bottom: 0;
   }
   .event-place, .dress-strong{
-    font-size:22px;
+     font-size:18px;
     margin-top:4px;
     font-family: var(--title);
     display: flex;
