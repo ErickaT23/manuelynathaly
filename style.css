@@ -646,13 +646,20 @@ a{
   }
   .collapsible-panel[hidden]{display:none}
   .wish-form{width:50%;max-width:none;display:grid;gap:10px;margin:18px auto 0}
-  .wish-form input, .wish-form textarea{width:100%;max-width:100%;padding:12px;border:1px solid var(--line);font-family:var(--text);font-size:16px;line-height:1.35;resize:vertical}
-  .wish-form input{min-height:92px;font-size:20px}
-  .wish-form textarea{min-height:240px;font-size:20px}
+  .wish-form input, .wish-form textarea{width:100%;max-width:100%;padding:12px;border:1px solid var(--line);font-family:var(--text);font-size:15px;line-height:1.35;resize:vertical}
   .wish-form .btn-outline{justify-self:center}
   .wishes-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px;width:100%;max-width:760px}
   .wish-card{padding:14px;border:1px solid var(--line);text-align:left}
-  .wish-card:last-child{grid-column:1 / -1;width:100%;max-width:none}
+  .wish-card:last-child{
+    grid-column:1 / -1;
+    width:320px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    margin-left:auto;
+    margin-right:auto;
+  }
   .wish-card strong{font-size:22px}
   .wish-card p{margin:8px 0 0}
   @media (max-width:560px){
