@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // 5) Contador (cambia a tu fecha real)
   // Formato recomendado: YYYY-MM-DDT00:00:00-06:00 (Guatemala -06)
-  initFlipCountdown("2027-01-09T00:00:00-06:00");
+  initFlipCountdown("2027-01-09T16:00:00-06:00");
   initAlbumQr();
 
   // 6) Foto separador rotativa (si existe el elemento)
