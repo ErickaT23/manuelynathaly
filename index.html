@@ -244,7 +244,8 @@
   <h3>Regalos</h3>
 
   <p class="gifts-strong">
-     Solo dinero en efectivo y mesa de regalos.
+     Su presencia es nuestro mejor regalo. Si desean acompañarnos con un detalle,
+     agradeceremos que sea en efectivo o a través de nuestra mesa de regalos.
   </p>
 
    <div class="gifts-buttons">
@@ -264,10 +265,35 @@
    <p>Comparte y disfruta los recuerdos de nuestro día.</p>
    <div id="albumQr" class="album-qr" aria-label="Código QR del álbum digital"></div>
    <a class="btn-outline" href="https://drive.google.com/drive/folders/17hmI2Y6tyMINTQXUziHLLg1off9QvFqy?usp=drive_link" target="_blank" rel="noopener">Abrir álbum digital</a>
+  </section>
+
+ <section class="wishes fade-in-element" id="wishesSection">
+   <div class="event-icon"><img src="images/BUENOSDESEOS.png" alt="Buenos deseos"></div>
+   <h3>Buenos deseos</h3>
+   <p class="wishes-intro">Déjanos un mensaje especial para este día tan importante.</p>
+   <div class="wishes-actions">
+     <button class="btn-outline" id="btnToggleWishForm" type="button">Enviar un mensaje</button>
+     <button class="btn-outline" id="btnToggleWishes" type="button">Leer mensajes</button>
+   </div>
+   <div class="collapsible-panel" id="wishFormPanel" hidden>
+     <form class="wish-form" id="wish-form">
+       <input id="wish-name" type="text" placeholder="Nombre del remitente" required>
+       <textarea id="wish-message" rows="4" placeholder="Mensaje" required></textarea>
+       <button class="btn-outline" type="submit">Enviar mensaje</button>
+       <p class="wish-status" id="wish-status" aria-live="polite"></p>
+     </form>
+   </div>
+   <div class="collapsible-panel" id="wishesPanel" hidden>
+     <div class="wishes-list" id="wishes">
+       <article class="wish-card"><strong>Tía Lucy</strong><p>Que Dios bendiga este camino que hoy comienzan juntos y que cada recuerdo esté lleno de amor, alegría y fe.</p></article>
+       <article class="wish-card"><strong>Beba</strong><p>¡Felicidades, chicos! Les deseo muchas bendiciones y prosperidad para su matrimonio.</p></article>
+       <article class="wish-card"><strong>Two Design</strong><p>¡Felicidades!</p></article>
+     </div>
+   </div>
  </section>
 
 
-<!-- ================= MODAL TRANSFERENCIA ================= -->
+ <!-- ================= MODAL TRANSFERENCIA ================= -->
 <div id="transferBackdrop" class="transfer-backdrop" aria-hidden="true" style="display:none">
   <div class="transfer-modal" role="dialog" aria-modal="true">
 
@@ -336,7 +362,6 @@
   </div>
 </div>
 
-<section class="full-sep" style="background-image:url('images/V4.jpg')"></section>
   <!-- FRASE FINAL -->
   <section class="love-quote fade-in-element" id="love">
    <p class="quote-script">Hoy elegimos caminar juntos para siempre, de la mano de Dios y rodeados de las personas que amamos. Gracias por acompañarnos en el comienzo de nuestra historia como esposos.</p>

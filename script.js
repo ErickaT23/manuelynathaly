@@ -13,6 +13,16 @@ document.addEventListener("DOMContentLoaded", () => {
     btnOpenInvite.addEventListener("click", openInvitation);
   }
 
+  const envelope = document.querySelector(".envelope");
+  if (envelope) {
+    envelope.setAttribute("role", "button");
+    envelope.setAttribute("tabindex", "0");
+    envelope.addEventListener("click", openInvitation);
+    envelope.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") openInvitation();
+    });
+  }
+
   // 3) Animaciones al hacer scroll
   initScrollReveal();
 
@@ -25,6 +35,7 @@ document.addEventListener("DOMContentLoaded", () => {
   // Formato recomendado: YYYY-MM-DDT00:00:00-06:00 (Guatemala -06)
   initFlipCountdown("2027-01-09T16:00:00-06:00");
   initAlbumQr();
+  initWishes();
 
   // 6) Foto separador rotativa (si existe el elemento)
   initRotatingSep([
@@ -34,6 +45,30 @@ document.addEventListener("DOMContentLoaded", () => {
     
   ]);
 });
+
+function initWishes() {
+  const formPanel = document.getElementById("wishFormPanel");
+  const wishesPanel = document.getElementById("wishesPanel");
+  const form = document.getElementById("wish-form");
+  const list = document.getElementById("wishes");
+  const status = document.getElementById("wish-status");
+  document.getElementById("btnToggleWishForm")?.addEventListener("click", () => { formPanel.hidden = !formPanel.hidden; });
+  document.getElementById("btnToggleWishes")?.addEventListener("click", () => { wishesPanel.hidden = !wishesPanel.hidden; });
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const name = document.getElementById("wish-name").value.trim();
+    const message = document.getElementById("wish-message").value.trim();
+    if (!name || !message) return;
+    const card = document.createElement("article");
+    card.className = "wish-card";
+    card.innerHTML = "<strong></strong><p></p>";
+    card.querySelector("strong").textContent = name;
+    card.querySelector("p").textContent = message;
+    list.prepend(card);
+    form.reset();
+    status.textContent = "Tu mensaje fue agregado. Gracias.";
+  });
+}
 
 function initAlbumQr() {
   const target = document.getElementById("albumQr");
